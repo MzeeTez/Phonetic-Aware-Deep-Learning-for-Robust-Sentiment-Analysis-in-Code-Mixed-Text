@@ -1,0 +1,9 @@
+# Model Weights
+*.pth
+
+# Large Data/JSON
+phonetic_data.json
+cleaned_data.json
+
+# Python Cache
+__pycache__/

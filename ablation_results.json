@@ -1,0 +1,62 @@
+[
+  {
+    "condition": "Full model",
+    "short": "full",
+    "accuracy": 0.5698,
+    "macro_f1": 0.5755,
+    "neg_f1": 0.628,
+    "neu_f1": 0.5222,
+    "pos_f1": 0.5763,
+    "neg_prec": 0.6119,
+    "pos_prec": 0.6821,
+    "best_val_f1": 0.6037
+  },
+  {
+    "condition": "\u2212 Phoneme channel",
+    "short": "no_phoneme",
+    "accuracy": 0.5791,
+    "macro_f1": 0.5853,
+    "neg_f1": 0.5943,
+    "neu_f1": 0.5254,
+    "pos_f1": 0.6363,
+    "neg_prec": 0.6336,
+    "pos_prec": 0.6818,
+    "best_val_f1": 0.612
+  },
+  {
+    "condition": "\u2212 Cross-modal attention",
+    "short": "no_cross_attn",
+    "accuracy": 0.5632,
+    "macro_f1": 0.5663,
+    "neg_f1": 0.6284,
+    "neu_f1": 0.4618,
+    "pos_f1": 0.6087,
+    "neg_prec": 0.554,
+    "pos_prec": 0.6715,
+    "best_val_f1": 0.6029
+  },
+  {
+    "condition": "\u2212 Language tags",
+    "short": "no_lang_tag",
+    "accuracy": 0.5817,
+    "macro_f1": 0.5862,
+    "neg_f1": 0.6114,
+    "neu_f1": 0.5053,
+    "pos_f1": 0.6419,
+    "neg_prec": 0.6094,
+    "pos_prec": 0.6478,
+    "best_val_f1": 0.6034
+  },
+  {
+    "condition": "\u2212 Phoneme + Cross-attn (word-only)",
+    "short": "word_only",
+    "accuracy": 0.5725,
+    "macro_f1": 0.5785,
+    "neg_f1": 0.6194,
+    "neu_f1": 0.5216,
+    "pos_f1": 0.5945,
+    "neg_prec": 0.6017,
+    "pos_prec": 0.696,
+    "best_val_f1": 0.5978
+  }
+]

@@ -1,0 +1,8 @@
+{
+  "word_vocab_size": 15003,
+  "phone_vocab_size": 3003,
+  "total_word_types": 52562,
+  "total_phone_types": 32432,
+  "min_word_freq": 2,
+  "oov_rate_percent": 10.096
+}

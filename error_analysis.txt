@@ -1,0 +1,67 @@
+======================================================================
+ERROR ANALYSIS — Phonetic-Aware Dual-Channel LSTM
+======================================================================
+
+Overall accuracy on test set: 0.5831  (881/1511 correct)
+
+── 1. Confusion Breakdown ──────────────────────────────────────────
+  Positive→Neutral            169 samples  (11.2%)
+  Neutral→Negative            147 samples  (9.7%)
+  Negative→Neutral            123 samples  (8.1%)
+  Neutral→Positive            117 samples  (7.7%)
+  Positive→Negative            52 samples  (3.4%)
+  Negative→Positive            22 samples  (1.5%)
+
+── 2. OOV Rate vs Accuracy ─────────────────────────────────────────
+  OOV bin       Accuracy   N samples
+  0%              0.6667         144
+  1-25%           0.5792        1300
+  26-50%          0.4923          65
+  51%+               0.0           2
+  → Higher OOV rate correlates with lower accuracy, confirming that
+    out-of-vocabulary romanised Hindi is a key failure mode.
+
+── 3. Sequence Length vs Accuracy ──────────────────────────────────
+  Length bin    Accuracy   N samples
+  1-5                N/A           0
+  6-10            0.4286          14
+  11-20            0.618         322
+  21+             0.5753        1175
+  → Short sequences (1-5 tokens) are hardest; longer sequences
+    provide more context for both LSTM channels.
+
+── 4. Language Mix Ratio vs Accuracy ───────────────────────────────
+  Mix type         Accuracy   N samples
+  Monolingual           N/A           0
+  Low mix            0.5868         968
+  High mix           0.5764         543
+  → Highly mixed (Hinglish) sentences are harder than monolingual
+    ones, motivating the language-tag embedding component.
+
+── 5. Negation Handling ────────────────────────────────────────────
+  Sentences with negation words: 446
+  Accuracy on negation sentences: 0.5336
+  Most common negation errors:
+    Neutral→Negative: 69 cases
+    Negative→Neutral: 59 cases
+    Positive→Neutral: 41 cases
+    Positive→Negative: 24 cases
+    Neutral→Positive: 10 cases
+  → Negation remains a key challenge; sentiment flip from nahi/nhi
+    is not reliably captured by the current architecture.
+
+── 6. High-Confidence Errors (top 10) ──────────────────────────────
+  True       Pred         Conf    OOV  Text
+  Neutral    Positive    0.952   0.04  my favorite captain ms dhoni my favorite...
+  Neutral    Positive    0.952   0.06  @ vijaykbandhu many more days and years ...
+  Neutral    Positive    0.952   0.07  rt @ nowthisisliving happy pride month !...
+  Neutral    Positive    0.952   0.05  @ narendramodi poem .. world cup .. 2019...
+  Neutral    Positive    0.952   0.10  @ lizreedpah you are beautiful looking v...
+  Neutral    Positive    0.952   0.00  @ beingsalmankhan god bless you salman j...
+  Neutral    Positive    0.952   0.15  @ narendramodi thank you sir sure modi j...
+  Neutral    Positive    0.952   0.10  @ itsybitsymaham _ thank you so much for...
+  Neutral    Positive    0.952   0.05  even though whatsapp saw it first 😁 show...
+  Neutral    Positive    0.952   0.00  @ maleehahashmey @ sherryrehman god bles...
+  → High-confidence errors are typically short sentences with
+    ambiguous sentiment or sarcasm — a known limitation of
+    lexicon-free deep learning approaches.

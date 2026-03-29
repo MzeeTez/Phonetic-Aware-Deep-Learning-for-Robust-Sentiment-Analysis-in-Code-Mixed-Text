@@ -1,0 +1,161 @@
+{
+  "total_test": 1511,
+  "total_correct": 881,
+  "overall_accuracy": 0.5831,
+  "confusion_pairs": {
+    "Positive→Neutral": 169,
+    "Neutral→Negative": 147,
+    "Negative→Neutral": 123,
+    "Neutral→Positive": 117,
+    "Positive→Negative": 52,
+    "Negative→Positive": 22
+  },
+  "oov_accuracy": {
+    "0%": 0.6667,
+    "1-25%": 0.5792,
+    "26-50%": 0.4923,
+    "51%+": 0.0
+  },
+  "length_accuracy": {
+    "1-5": null,
+    "6-10": 0.4286,
+    "11-20": 0.618,
+    "21+": 0.5753
+  },
+  "mix_accuracy": {
+    "Monolingual": null,
+    "Low mix": 0.5868,
+    "High mix": 0.5764
+  },
+  "negation_accuracy": 0.5336,
+  "negation_n": 446,
+  "negation_confusion": [
+    [
+      "Neutral→Negative",
+      69
+    ],
+    [
+      "Negative→Neutral",
+      59
+    ],
+    [
+      "Positive→Neutral",
+      41
+    ],
+    [
+      "Positive→Negative",
+      24
+    ],
+    [
+      "Neutral→Positive",
+      10
+    ]
+  ],
+  "top_confident_errors": [
+    {
+      "true": "Neutral",
+      "pred": "Positive",
+      "confidence": 0.952,
+      "words": "my favorite captain ms dhoni my favorite bowler zaheer khan my favorite batsman the virat run machine kohli my …",
+      "oov_rate": 0.038
+    },
+    {
+      "true": "Neutral",
+      "pred": "Positive",
+      "confidence": 0.952,
+      "words": "@ vijaykbandhu many more days and years of good health good life and prosperity happy birthday .",
+      "oov_rate": 0.059
+    },
+    {
+      "true": "Neutral",
+      "pred": "Positive",
+      "confidence": 0.952,
+      "words": "rt @ nowthisisliving happy pride month !! i hope you feel even the slightest bit of pride in yourself this",
+      "oov_rate": 0.067
+    },
+    {
+      "true": "Neutral",
+      "pred": "Positive",
+      "confidence": 0.952,
+      "words": "@ narendramodi poem .. world cup .. 2019 .. victory for india .. hokar rahega // t . co /",
+      "oov_rate": 0.048
+    },
+    {
+      "true": "Neutral",
+      "pred": "Positive",
+      "confidence": 0.952,
+      "words": "@ lizreedpah you are beautiful looking very beautiful i want to friends ship with you my name raza bhatti i",
+      "oov_rate": 0.103
+    },
+    {
+      "true": "Neutral",
+      "pred": "Positive",
+      "confidence": 0.952,
+      "words": "@ beingsalmankhan god bless you salman ji app best or lucky person ho app ki sari umar tarki ho god",
+      "oov_rate": 0.0
+    },
+    {
+      "true": "Neutral",
+      "pred": "Positive",
+      "confidence": 0.952,
+      "words": "@ narendramodi thank you sir sure modi ji you are surely outari purus our country surely become vishva guru atleast",
+      "oov_rate": 0.15
+    },
+    {
+      "true": "Neutral",
+      "pred": "Positive",
+      "confidence": 0.952,
+      "words": "@ itsybitsymaham _ thank you so much for the appreciation glad to hear that and means a lot to me",
+      "oov_rate": 0.097
+    },
+    {
+      "true": "Neutral",
+      "pred": "Positive",
+      "confidence": 0.952,
+      "words": "even though whatsapp saw it first 😁 show some love twitter fam # ramadan mubarak // tco / o9gufhgjbq",
+      "oov_rate": 0.053
+    },
+    {
+      "true": "Neutral",
+      "pred": "Positive",
+      "confidence": 0.952,
+      "words": "@ maleehahashmey @ sherryrehman god bless you beti and much thanks for the fabulous replies to the corrupt opposition mafia",
+      "oov_rate": 0.0
+    },
+    {
+      "true": "Neutral",
+      "pred": "Positive",
+      "confidence": 0.952,
+      "words": "rt @ iamsrk bhai ne phir jiyra chakna choor kar diya . thank u big boss & @ beingsalmankhan for",
+      "oov_rate": 0.067
+    },
+    {
+      "true": "Neutral",
+      "pred": "Positive",
+      "confidence": 0.952,
+      "words": "@ pintukumarakki 😂😂.. sultan dabangg tiger bhaijaan masterpiece real king of bollywood only big boss anchor fee 300c … //",
+      "oov_rate": 0.12
+    },
+    {
+      "true": "Neutral",
+      "pred": "Positive",
+      "confidence": 0.952,
+      "words": "@ drpradipbaruah2 open it sirjee .. do one thing .. send me a dm .. i'll respond .. thank you",
+      "oov_rate": 0.048
+    },
+    {
+      "true": "Neutral",
+      "pred": "Positive",
+      "confidence": 0.951,
+      "words": "@ gurmeetramrahim good morning pita ji pls bless me sewa sumrin and parmarth bakso ji #बेटियां_लाएंगी_बारात // t . co",
+      "oov_rate": 0.091
+    },
+    {
+      "true": "Neutral",
+      "pred": "Positive",
+      "confidence": 0.951,
+      "words": "@ nikita12s mere taraf se aapki mom ko unki janam diwas ki dher sari subhkamnaye 🙏 // t co /",
+      "oov_rate": 0.095
+    }
+  ]
+}
