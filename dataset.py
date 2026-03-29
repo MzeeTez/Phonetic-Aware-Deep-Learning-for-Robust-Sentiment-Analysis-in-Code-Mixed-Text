@@ -72,7 +72,7 @@ class CodeMixedDataset(Dataset):
         self.augment     = augment
         self.mask_prob   = mask_prob
         self.unk_w       = self.word_vocab.get("<UNK>", 1)
-        self.unk_p       = self.phone_vocab.get("<UNK>", 1)
+        self.unk_p       = self.phone_vocab.get("<UNK_PHONE>", 1)
         self.pad_p       = self.phone_vocab.get("<PAD>", 0)
 
     # ── helpers ───────────────────────────────────────────────────────────

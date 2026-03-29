@@ -53,8 +53,8 @@ with open("vocabs.json", encoding="utf-8") as f:
 state_dict = torch.load("best_model.pth", map_location=DEVICE, weights_only=True)
 
 model = EnhancedDualChannelLSTM(
-    word_vocab_size  = len(v["word_vocab"]),
-    phone_vocab_size = len(v["phone_vocab"]),
+    word_vocab_size  = max(v["word_vocab"].values()) + 1,
+    phone_vocab_size = max(v["phone_vocab"].values()) + 1,
     dropout     = 0.0,   # always disable stochastic layers at eval time
     var_dropout = 0.0,
 ).to(DEVICE)

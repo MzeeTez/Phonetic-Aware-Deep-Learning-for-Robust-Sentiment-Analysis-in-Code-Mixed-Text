@@ -110,9 +110,10 @@ phone_vocab = v["phone_vocab"]
 
 state_dict = torch.load(args.model_path, map_location=DEVICE, weights_only=True)
 model = EnhancedDualChannelLSTM(
-    word_vocab_size  = len(word_vocab),
-    phone_vocab_size = len(phone_vocab),
-    dropout=0.0, var_dropout=0.0,
+    word_vocab_size  = max(v["word_vocab"].values()) + 1,
+    phone_vocab_size = max(v["phone_vocab"].values()) + 1,
+    dropout     = 0.0,
+    var_dropout = 0.0,
 ).to(DEVICE)
 model.load_state_dict(state_dict)
 model.eval()
@@ -296,7 +297,7 @@ for level in NOISE_LEVELS:
     row = f"{int(level*100):d}\\%"
     for noise_name in NOISE_FNS.keys():
         entry = results[noise_name][str(level)]
-        row += f" & ${entry['mean_f1']:.4f}_{{\pm{entry['std_f1']:.4f}}}$"
+        row += f" & ${entry['mean_f1']:.4f}_{{\\pm{entry['std_f1']:.4f}}}$"
     row += r" \\"
     lines.append(row)
 lines.append(r"\bottomrule")

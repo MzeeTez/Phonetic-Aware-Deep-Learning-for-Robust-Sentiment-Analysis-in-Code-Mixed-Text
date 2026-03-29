@@ -1,0 +1,44 @@
+========================================================================
+NOISE ROBUSTNESS ANALYSIS
+Macro-F1 (mean ± std over 5 trials) at increasing noise levels
+========================================================================
+Noise %   char_swap         vowel_drop        char_repeat       combined          
+────────────────────────────────────────────────────────────────────────
+0%      0.5871±0.0000     0.5871±0.0000     0.5871±0.0000     0.5871±0.0000     
+10%      0.5759±0.0053     0.5816±0.0036     0.5797±0.0063     0.5760±0.0060     
+20%      0.5652±0.0039     0.5706±0.0113     0.5533±0.0045     0.5537±0.0096     
+30%      0.5493±0.0047     0.5622±0.0046     0.5280±0.0088     0.5321±0.0080     
+40%      0.5293±0.0053     0.5493±0.0089     0.4949±0.0100     0.4972±0.0095     
+50%      0.4992±0.0123     0.5331±0.0065     0.4530±0.0066     0.4502±0.0056     
+
+Interpretation:
+  - 0% noise = clean test set baseline (should match evaluate.py)
+  - char_swap/vowel_drop model OOV rate growth in the word channel
+  - phoneme channel partially compensates because get_phonemes()
+    re-encodes the noisy surface form — phonetically similar words
+    still map to similar phoneme sequences
+  - large drop at 50% = upper bound of degradation for paper discussion
+
+
+LaTeX table:
+
+\begin{table}[t]
+\centering
+\caption{Noise robustness. Macro-F1 (mean$\pm$std, 5 trials) as the
+  fraction of perturbed tokens increases. Perturbations simulate
+  real Hinglish social-media spelling variation.}
+\label{tab:noise}
+\small
+\begin{tabular}{lcccc}
+\toprule
+\textbf{Noise \%} & \textbf{char-swap} & \textbf{vowel-drop} & \textbf{char-repeat} & \textbf{combined} \\
+\midrule
+0\% & $0.5871_{\pm0.0000}$ & $0.5871_{\pm0.0000}$ & $0.5871_{\pm0.0000}$ & $0.5871_{\pm0.0000}$ \\
+10\% & $0.5759_{\pm0.0053}$ & $0.5816_{\pm0.0036}$ & $0.5797_{\pm0.0063}$ & $0.5760_{\pm0.0060}$ \\
+20\% & $0.5652_{\pm0.0039}$ & $0.5706_{\pm0.0113}$ & $0.5533_{\pm0.0045}$ & $0.5537_{\pm0.0096}$ \\
+30\% & $0.5493_{\pm0.0047}$ & $0.5622_{\pm0.0046}$ & $0.5280_{\pm0.0088}$ & $0.5321_{\pm0.0080}$ \\
+40\% & $0.5293_{\pm0.0053}$ & $0.5493_{\pm0.0089}$ & $0.4949_{\pm0.0100}$ & $0.4972_{\pm0.0095}$ \\
+50\% & $0.4992_{\pm0.0123}$ & $0.5331_{\pm0.0065}$ & $0.4530_{\pm0.0066}$ & $0.4502_{\pm0.0056}$ \\
+\bottomrule
+\end{tabular}
+\end{table}

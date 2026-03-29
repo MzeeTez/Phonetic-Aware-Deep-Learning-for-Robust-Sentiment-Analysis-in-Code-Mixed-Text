@@ -93,8 +93,8 @@ with open(CFG["vocab_path"], encoding="utf-8") as f:
     v = json.load(f)
 
 model = EnhancedDualChannelLSTM(
-    word_vocab_size  = len(v["word_vocab"]),
-    phone_vocab_size = len(v["phone_vocab"]),
+    word_vocab_size  = max(v["word_vocab"].values()) + 1,
+    phone_vocab_size = max(v["phone_vocab"].values()) + 1,
     dropout          = CFG["dropout"],
     var_dropout      = CFG["var_dropout"],
 ).to(device)
@@ -147,6 +147,17 @@ def run_epoch(loader, train=True):
             pids = batch["phone_ids"].to(device)   # (B, T, max_phones)
             lids = batch["lang_ids"].to(device)
             labs = batch["label"].to(device)
+
+            # ─── DIAGNOSTIC ASSERTS TO CATCH CUDA INDEX OUT OF BOUNDS ───
+            assert wids.max().item() < model.word_embed.num_embeddings, \
+                f"Crash: Word ID {wids.max().item()} >= Vocab Size {model.word_embed.num_embeddings}"
+            
+            assert pids.max().item() < model.phone_encoder.embed.num_embeddings, \
+                f"Crash: Phone ID {pids.max().item()} >= Vocab Size {model.phone_encoder.embed.num_embeddings}"
+            
+            assert lids.max().item() < model.lang_embed.num_embeddings, \
+                f"Crash: Lang ID {lids.max().item()} >= Max Lang Tags {model.lang_embed.num_embeddings}"
+            # ────────────────────────────────────────────────────────────
 
             with torch.amp.autocast("cuda", enabled=device.type == "cuda"):
                 logits, _, _ = model(wids, pids, lids)

@@ -188,9 +188,10 @@ def train_condition(ablation_cfg: dict) -> dict:
     print(f"  Condition: {name}")
     print(f"{'='*60}")
 
+    # FIXED: Added max() + 1 to prevent CUDA Out of Bounds errors
     model = AblationDualChannelLSTM(
-        word_vocab_size  = len(v["word_vocab"]),
-        phone_vocab_size = len(v["phone_vocab"]),
+        word_vocab_size  = max(v["word_vocab"].values()) + 1,
+        phone_vocab_size = max(v["phone_vocab"].values()) + 1,
         dropout          = CFG["dropout"],
         var_dropout      = CFG["var_dropout"],
         ablate_phoneme    = ablation_cfg["ablate_phoneme"],
